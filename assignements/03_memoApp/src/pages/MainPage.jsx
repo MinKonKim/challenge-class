@@ -28,5 +28,5 @@ const Sub = styled.div`
   height: 45vh;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
 `;
