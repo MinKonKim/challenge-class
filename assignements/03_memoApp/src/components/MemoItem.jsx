@@ -27,7 +27,6 @@ const ItemWrapper = styled.div`
   flex-direction: column;
   justify-items: center;
 
-  max-width: 30vw;
   height: 70px;
 
   margin: 10px;

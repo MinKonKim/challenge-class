@@ -8,7 +8,7 @@ const memosSlice = createSlice({
   initialState,
   reducers: {
     addMemo: (prev, action) => {
-      prev.push(action.payload);
+      prev.unshift(action.payload);
     },
     updateMemo: (prev, action) => {
       const index = prev.findIndex((memo) => memo.id === action.payload.id);

@@ -5,7 +5,6 @@ import { addMemo, deleteMomo, updateMemo } from "../redux/slice/memoListSlice";
 import MemoItem from "./MemoItem";
 
 const MemoList = () => {
-  const today = new Date();
   // redux
   const { memoList, dumpMemo } = useSelector((state) => ({
     memoList: state.memoList,
@@ -20,7 +19,7 @@ const MemoList = () => {
 
   useEffect(() => {
     dispatch(updateMemo(dumpMemo));
-  }, [dumpMemo]);
+  }, [dumpMemo, dispatch]);
 
   useEffect(() => {
     if (isNewMemoAdded) {
@@ -39,6 +38,7 @@ const MemoList = () => {
   };
 
   const handleAddMemo = () => {
+    const today = new Date();
     const newMemo = {
       id: today.getTime(),
       time: today.toLocaleTimeString().substring(0, 7),
@@ -74,6 +74,10 @@ const MemoList = () => {
             key={memo.id}
             tabIndex={0}
             ref={isLastMemo || isFirstMemo ? lastMemoRef : null}
+            aria-label={`메모 ${index + 1}: ${memo.content.substring(
+              0,
+              50
+            )}...`} // 접근성 개선을 위해 aria-label 추가
           >
             <MemoItem
               memo={memo}
@@ -91,15 +95,14 @@ export default MemoList;
 
 const ListWrapper = styled.div`
   margin: 0;
-  width: 30%;
-  min-width: 20%;
+  width: 300px;
   border-right: 1px solid rgba(0, 0, 0, 0.1);
   height: 100%;
 `;
 
 const Button = styled.button`
   border: none;
-  background-color: white;
+  background-color: transparent;
 
   font-weight: 600;
   font-size: 15px;
