@@ -6,8 +6,10 @@ import nowDate from "../utils/nowDate";
 const MemoForm = () => {
   const dispatch = useDispatch();
   const dumpMemo = useSelector((state) => state.dumpMemo);
+
   const onChangeDumpMemo = (e) => {
     e.preventDefault();
+    // DumpMemo에 값을 저장한다.
     dispatch(
       setDumpMemo({
         id: dumpMemo.id,
@@ -31,6 +33,7 @@ const DateSpan = styled.span`
   display: flex;
   justify-content: center;
   color: rgba(0, 0, 0, 0.5);
+  font-size: 13px;
 `;
 const MemoInputContainer = styled.div`
   flex: 1;

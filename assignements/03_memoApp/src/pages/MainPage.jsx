@@ -22,9 +22,11 @@ const Main = styled.div`
 `;
 const Sub = styled.div`
   display: flex;
-  width: 100%;
-  height: 50vh;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  height: 45vh;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
 `;

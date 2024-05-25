@@ -14,29 +14,36 @@ const MemoList = () => {
   const lastMemoRef = useRef(null);
 
   //useState
-  const [isNewMemoAdded, setIsNewMemoAdded] = useState(false);
-  const [selectedMemoId, setSelectedMemoId] = useState(null);
+  const [isNewMemoAdded, setIsNewMemoAdded] = useState(false); // 메모가 작성중임을 나타내는 state
+  const [selectedMemoId, setSelectedMemoId] = useState(null); // 선택된 id 값을 나타내는 state
 
   useEffect(() => {
+    // dumpMemo 가 변경될 때 마다,
     dispatch(updateMemo(dumpMemo));
   }, [dumpMemo, dispatch]);
 
   useEffect(() => {
+    // memoList 와 isNewMemoAdded 가 변경될 때 마다,
     if (isNewMemoAdded) {
       lastMemoRef.current?.focus();
       setIsNewMemoAdded(false);
     }
   }, [memoList, isNewMemoAdded]);
+
   useEffect(() => {
+    // memoList ,와 selectedMemoId가 변경될 때 마다
     if (selectedMemoId === null && memoList.length > 0) {
+      // 선택된 Id 값이 null이고 memoList에 값이 있다면,
       setSelectedMemoId(memoList[memoList.length - 1].id);
     }
   }, [memoList, selectedMemoId]);
 
+  // 선택한 ID 값 Set
   const handleMemoClick = (id) => {
     setSelectedMemoId(id);
   };
 
+  // 메모 추가
   const handleAddMemo = () => {
     const today = new Date();
     const newMemo = {
@@ -46,9 +53,10 @@ const MemoList = () => {
     };
     dispatch(addMemo(newMemo));
     setIsNewMemoAdded(true);
-    setSelectedMemoId(newMemo.id);
+    setSelectedMemoId(newMemo.id); // 최근 추가된 memo 의 Id 선택
   };
 
+  // 메모 삭제
   const handleDeleteMemo = () => {
     if (memoList.length == 1) {
       alert("최소 1개 이상의 메모는 존재해야 합니다.");
@@ -56,7 +64,7 @@ const MemoList = () => {
     }
     if (selectedMemoId !== null) {
       dispatch(deleteMomo(selectedMemoId));
-      setSelectedMemoId(null);
+      setSelectedMemoId(memoList[0].id); // 가장 최신의 메모 Id 선택
     }
   };
 
