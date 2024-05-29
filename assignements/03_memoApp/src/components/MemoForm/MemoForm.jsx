@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import styled from "styled-components";
-import { setDumpMemo } from "../redux/slice/dumpMemoSlice";
-import nowDate from "../utils/nowDate";
+import { setDumpMemo } from "../../redux/slice/dumpMemoSlice";
+import nowDate from "../../utils/nowDate";
+import { DateSpan, MemoInput, MemoInputContainer } from "./MemoForm.styled";
 
 const MemoForm = () => {
   const dispatch = useDispatch();
@@ -28,26 +28,3 @@ const MemoForm = () => {
 };
 
 export default MemoForm;
-
-const DateSpan = styled.span`
-  display: flex;
-  justify-content: center;
-  color: rgba(0, 0, 0, 0.5);
-  font-size: 13px;
-`;
-const MemoInputContainer = styled.div`
-  flex: 1;
-  padding: 20px;
-`;
-const MemoInput = styled.textarea`
-  width: 100%;
-  height: 98%;
-  box-sizing: border-box;
-  border: none;
-  border-radius: 5px;
-  resize: vertical;
-  font-size: 16px;
-  &:focus {
-    outline: none;
-  }
-`;

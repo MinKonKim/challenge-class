@@ -1,26 +1,4 @@
-import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { setDumpMemo } from "../redux/slice/dumpMemoSlice";
-
-const MemoItem = ({ memo, onClick, isSelected }) => {
-  const dispatch = useDispatch();
-
-  const handleClick = () => {
-    dispatch(setDumpMemo(memo));
-    onClick();
-  };
-
-  return (
-    <ItemWrapper onClick={handleClick}>
-      <Wrapper isSelected={isSelected}>
-        <Content>{memo.content === "" ? "새로운 메모" : memo.content}</Content>
-        <Time>{memo.time}</Time>
-      </Wrapper>
-    </ItemWrapper>
-  );
-};
-
-export default MemoItem;
 
 const ItemWrapper = styled.div`
   display: flex;
@@ -55,3 +33,5 @@ const Time = styled.div`
   margin-top: 5px;
   color: "#1111";
 `;
+
+export { Content, ItemWrapper, Time, Wrapper };
